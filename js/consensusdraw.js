@@ -2,10 +2,10 @@
 var margin = {top: 20, right: 30, bottom: 30, left: 50},
 	marginAll = {top: 20, right: 30, bottom: 30, left: 50}
     width = ($(".chart.focus").width()-10) - margin.left - margin.right,
-    heightBrush = 500 - margin.top - margin.bottom,
+    heightBrush = 250 - margin.top - margin.bottom,
 	heightAll = 100 - marginAll.top - marginAll.bottom;
 
-var startYear = 10,
+var startYear = 01,
 	endYear = 59,
 	yearRange = endYear - startYear;
 
