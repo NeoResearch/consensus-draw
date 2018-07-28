@@ -33,14 +33,14 @@ function addMsg(x, nodelist=[]) {
       height = Number(y.substring(y.indexOf("height=")+"height=".length, y.lenght).split(" ")[0]);
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
       index  = Number(y.substring(y.indexOf("index=")+"index=".length, y.lenght).split(" ")[0]);
-      role   = Number(y.substring(y.indexOf("role=")+"role=".length, y.lenght).split(" ")[0]);
+      role   = y.substring(y.indexOf("role=")+"role=".length, y.lenght).split(" ")[0];
       nodelist.push(new LogMsg(timestamp, idstr, height, view, index, tx, nv, status, role, expected, current, nodes));
    }
    idstr = "timeout"; //[03:38:42] timeout: height=58 view=0 state=Primary
    if(y.startsWith(idstr)) {
       height = Number(y.substring(y.indexOf("height=")+"height=".length, y.lenght).split(" ")[0]);
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
-      state  = Number(y.substring(y.indexOf("state=")+"state=".length, y.lenght).split(" ")[0]);
+      state  = y.substring(y.indexOf("state=")+"state=".length, y.lenght).split(" ")[0];
       nodelist.push(new LogMsg(timestamp, idstr, height, view, index, tx, nv, status, role, expected, current, nodes));
    }
    idstr = "send perpare request"; //[03:38:42] send perpare request: height=58 view=0
@@ -73,18 +73,10 @@ function addMsg(x, nodelist=[]) {
 
 
 node1logs = $("#node1data")[0].value.split("\n");
-
 node1list = [];
-addMsg(node1logs[0], node1list);
-
-
-var msgtype = -1;
-if(y.startsWith("send perpare response"))
-   alert("oi");
-
-
-y.startsWith("initialize");
-
+var i = 0;
+for(i=0; i<node1logs.length; i++)
+   addMsg(node1logs[i], node1list);
 
 
 // "send perpare response" -> SignAndRelay(context.MakePrepareResponse(context.Signatures[context.MyIndex]));
