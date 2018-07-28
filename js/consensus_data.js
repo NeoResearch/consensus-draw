@@ -1,3 +1,8 @@
+
+var example = test_example();
+
+var consensus_data = example.data;
+/*
 var consensus_data = [
   {
     "name": "PrepResponse_2_559_0",
@@ -923,6 +928,7 @@ var consensus_data = [
     ]
   }
 ];
+*/
 
 allMessageNames = [];
 messageNamesByID = [];
@@ -935,6 +941,8 @@ consensus_data.forEach(function(d,i) {
 // orange: "#FFC600" / "#FEC60B"
 // purple: "#76448E"
 
+var colorMessages = d3.scale.ordinal().range(example.colors).domain(allMessageNames);
+/*
 var colorMessages = d3.scale.ordinal()
 		.range([
   "#00FF00",
@@ -1009,7 +1017,8 @@ var colorMessages = d3.scale.ordinal()
   "#00FF00",
   "#FEC60B"
 ]).domain(allMessageNames);
+*/
 
-var startYear = 64431,
-	endYear = 64503,
+var startYear = example.beginTime, //64431,
+	endYear = example.endTime, //64503,
 	yearRange = endYear - startYear;
