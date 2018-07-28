@@ -195,8 +195,7 @@ function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
    cnode_lists[node4id] = node4list;
 
    var cnode_json = [];
-
-
+   var color_list = [];
 
    for(k=0; k<4; k++) {
       console.log("consensus k="+k);
@@ -210,10 +209,14 @@ function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
             var values = [];
             values.push({"year" : begin_times[k]+0.01, "position":k});
             values.push({"year" : cnode_lists[k][i].timestamp+0.01, "position":k});
-            if(cnode_lists[k][i].state=="Primary")
+            if(cnode_lists[k][i].state=="Primary") {
                cnode_json.push({"name":"PrimaryTimeout_"+k+ "_"+cnode_lists[k][i].height+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
-            else
+               color_list.push("#76448E");
+            }
+            else {
                cnode_json.push({"name":"Timeout_"+k+"_"+cnode_lists[k][i].height+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
+               color_list.push("#CCCCCC");
+            }
          }
 
          if(cnode_lists[k][i].idstr == "OnPrepareRequestReceived") {
@@ -229,6 +232,7 @@ function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
             values.push({"year" : ""+sendermsg.timestamp+".02"+k, "position": senderc});
             values.push({"year" : ""+cnode_lists[k][i].timestamp+".02"+senderc, "position":k});
             cnode_json.push({"name":"PrepRequest_"+senderc+"_"+sendermsg.height+"_"+k, "values":values});
+            color_list.push("#FEC60B");
          }
 
          if(cnode_lists[k][i].idstr == "OnPrepareResponseReceived") {
@@ -243,6 +247,7 @@ function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
             values.push({"year" : ""+sendermsg.timestamp+".03"+k, "position": senderc});
             values.push({"year" : ""+cnode_lists[k][i].timestamp+".03"+senderc, "position":k});
             cnode_json.push({"name":"PrepResponse_"+senderc+"_"+sendermsg.height+"_"+k, "values":values});
+            color_list.push("#00FF00");
          }
 
          if(cnode_lists[k][i].idstr == "OnChangeViewReceived") {
@@ -257,12 +262,14 @@ function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
             values.push({"year" : ""+sendermsg.timestamp+".04"+k, "position": senderc});
             values.push({"year" : ""+cnode_lists[k][i].timestamp+".04"+senderc, "position":k});
             cnode_json.push({"name":"ChangeView_"+senderc+"_"+sendermsg.height+"_"+k+"_"+cnode_lists[k][i].nv, "values":values});
+            color_list.push("#FF0000");
          }
          // TODO: continue...
       }
    }
 
-   color_list = [];
 
    return {"data": cnode_json, "colors" : color_list};
 }
+
+// parseLogsGenerateJson($("#node2data")[0].value, $("#node4data")[0].value, $("#node1data")[0].value, $("#node3data")[0].value);
