@@ -183,22 +183,17 @@ for(k=0; k<4; k++) {
       }
 
       if(cnode_lists[k][i].idstr == "OnPrepareRequestReceived") {
-         console.log("findSendBefore for OnPrepareRequestReceived k="+k+" height="+cnode_lists[k][i].height);
          var sendermsg = findSendBefore("send perpare request", cnode_lists, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
          if(!sendermsg) {
+            console.log("findSendBefore for OnPrepareRequestReceived k="+k+" height="+cnode_lists[k][i].height);
             console.log("WARNING! could not find origin of message.");//+JSON.stringify(cnode_lists[k][i]));
             continue;
          }
-         /*
-         var senderc = sendermsg.index;
+         var senderc = sendermsg.index;  // sender consensus (destination is k)
          var values = [];
-         values.push({"year" : begin_times[k]+0.01, "position":k});
-         values.push({"year" : cnode_lists[k][i].timestamp+0.01, "position":k});
-         if(cnode_lists[k][i].state=="Primary")
-            cnode_json.push({"name":"PrimaryTimeout_"+k+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
-         else
-            cnode_json.push({"name":"Timeout_"+k+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
-         */
+         values.push({"year" : ""+sendermsg.timestamp+".02"+k, "position": senderc});
+         values.push({"year" : ""+cnode_lists[k][i].timestamp+".02"+senderc, "position":k});
+         cnode_json.push({"name":"PrepRequest_"+senderc+"_"+sendermsg.height+"_"+k, "values":values});
          continue;
       }
 
