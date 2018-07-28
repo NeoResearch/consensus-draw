@@ -15,6 +15,7 @@ function LogMsg(timestamp, idstr, height=-1, view=-1, index=-1, tx=-1, nv=-1, st
    this.nodes = nodes;
 };
 
+
 function addMsg(x, consensus_id, nodelist=[]) {
    a = x.substring(1, 9).split(':');
    y = x.substring(10, x.length).trim();
@@ -34,6 +35,10 @@ function addMsg(x, consensus_id, nodelist=[]) {
       height = Number(y.substring(y.indexOf("height=")+"height=".length, y.lenght).split(" ")[0]);
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
       index  = Number(y.substring(y.indexOf("index=")+"index=".length, y.lenght).split(" ")[0]);
+      if(consensus_id != index) {
+         console.log("ERROR! consensus "+ consensus_id + " should be "+ index);
+         return;
+      }
       role   = y.substring(y.indexOf("role=")+"role=".length, y.lenght).split(" ")[0];
       nodelist.push(new LogMsg(timestamp, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
    }
@@ -93,11 +98,11 @@ function addMsg(x, consensus_id, nodelist=[]) {
 function findSendBefore(strid, cnode_lsts, timestamp, receiver_id, height, view) {
    for(cid=0; cid<4; cid++) {
       if(cid != receiver_id) {
-         for(i=0; i<cnode_lsts[cid].length; i++) {
-            if(cnode_lsts[cid][i].timestamp > timestamp)
+         for(j=0; j<cnode_lsts[cid].length; j++) {
+            if(cnode_lsts[cid][j].timestamp > timestamp)
                break; // ordered list by timestamp
-            if((cnode_lsts[cid][i].idstr == strid) && (cnode_lsts[cid][i].height == height) && (cnode_lsts[cid][i].view == view)) {
-               return cnode_lsts[cid][i];
+            if((cnode_lsts[cid][j].idstr == strid) && (cnode_lsts[cid][j].height == height) && (cnode_lsts[cid][j].view == view)) {
+               return cnode_lsts[cid][j];
             }
          }
       }
@@ -108,27 +113,32 @@ function findSendBefore(strid, cnode_lsts, timestamp, receiver_id, height, view)
 var i = 0;
 node1logs = $("#node1data")[0].value.split("\n");
 node1list = [];
+node1id = 2;
 for(i=0; i<node1logs.length; i++)
-   addMsg(node1logs[i], 0, node1list);
+   addMsg(node1logs[i], node1id, node1list);
 
 node2logs = $("#node2data")[0].value.split("\n");
 node2list = [];
+node2id = 0;
 for(i=0; i<node2logs.length; i++)
-   addMsg(node2logs[i], 1, node2list);
+   addMsg(node2logs[i], node2id, node2list);
 
 node3logs = $("#node3data")[0].value.split("\n");
 node3list = [];
+node3id = 3;
 for(i=0; i<node3logs.length; i++)
-   addMsg(node3logs[i], 2, node3list);
+   addMsg(node3logs[i], node3id, node3list);
 
 node4logs = $("#node4data")[0].value.split("\n");
 node4list = [];
+node4id = 1;
 for(i=0; i<node4logs.length; i++)
-   addMsg(node4logs[i], 3, node4list);
+   addMsg(node4logs[i], node4id, node4list);
 
 var beginTime = 100000000000;
 var endTime = 0;
 
+// any order
 nodelist = node1list.concat(node2list.concat(node3list.concat(node4list)));
 for(i=0; i<nodelist.length; i++) {
    if(nodelist[i].timestamp < beginTime)
@@ -143,21 +153,20 @@ var begin_times = [];
 var k = 0;
 for(k=0; k<4; k++)
    begin_times.push(beginTime);
-var cnode_lists = [];
-cnode_lists.push(node1list);
-cnode_lists.push(node2list);
-cnode_lists.push(node3list);
-cnode_lists.push(node4list);
+var cnode_lists = [null, null, null, null];
+cnode_lists[node1id] = node1list;
+cnode_lists[node2id] = node2list;
+cnode_lists[node3id] = node3list;
+cnode_lists[node4id] = node4list;
 
 var cnode_json = [];
 
 
 
 for(k=0; k<4; k++) {
-   console.log("k="+k);
-
+   console.log("consensus k="+k);
    for(i=0; i<cnode_lists[k].length; i++) {
-      console.log("k="+k+" i="+i);
+      //console.log("consensus k="+k+" i="+i);
       if(cnode_lists[k][i].idstr == "initialize") {
          begin_times[k] = cnode_lists[k][i].timestamp;
          continue;
@@ -174,12 +183,10 @@ for(k=0; k<4; k++) {
       }
 
       if(cnode_lists[k][i].idstr == "OnPrepareRequestReceived") {
-         console.log("findSendBefore for k="+k+" height="+cnode_lists[k][i].height);
+         console.log("findSendBefore for OnPrepareRequestReceived k="+k+" height="+cnode_lists[k][i].height);
          var sendermsg = findSendBefore("send perpare request", cnode_lists, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
-         sendermsg = null;
          if(!sendermsg) {
-            console.log("ERROR! could not find origin of message "+JSON.stringify(cnode_lists[k][i]));
-            console.log("i="+i+" next i should be "+(i+1));
+            console.log("WARNING! could not find origin of message.");//+JSON.stringify(cnode_lists[k][i]));
             continue;
          }
          /*
