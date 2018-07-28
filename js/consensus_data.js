@@ -1009,3 +1009,7 @@ var colorMessages = d3.scale.ordinal()
   "#00FF00",
   "#FEC60B"
 ]).domain(allMessageNames);
+
+var startYear = 64431,
+	endYear = 64503,
+	yearRange = endYear - startYear;
