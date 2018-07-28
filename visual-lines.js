@@ -91,6 +91,17 @@ node4list = [];
 for(i=0; i<node4logs.length; i++)
    addMsg(node4logs[i], node4list);
 
+var beginTime = 100000000000;
+var endTime = 0;
+
+nodelist = node1list.concat(node2list.concat(node3list.concat(node4list)));
+for(i=0; i<nodelist.length; i++) {
+   if(nodelist[i].timestamp < beginTime)
+      beginTime = nodelist[i].timestamp;
+   if(nodelist[i].timestamp > endTime)
+      endTime = nodelist[i].timestamp;
+}
+
 
 
 // "send perpare response" -> SignAndRelay(context.MakePrepareResponse(context.Signatures[context.MyIndex]));
