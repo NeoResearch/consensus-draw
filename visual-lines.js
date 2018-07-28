@@ -108,9 +108,11 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
    return -1;
 };
 
-// find "send" message before "timestamp" on other consensus (k != receiver_id)
-function findSendBefore(strid, cnode_lsts, timestamp, receiver_id, height, view) {
+// find "send" message before "timestamp" on other consensus (k != receiver_id). senderidx = -1 means search all...
+function findSendBefore(strid, cnode_lsts, senderidx, timestamp, receiver_id, height, view) {
    for(cid=0; cid<4; cid++) {
+      if((senderidx != -1) && (senderidx != cid))
+         continue; // specific senderidx must be found
       if(cid != receiver_id) {
          for(j=0; j<cnode_lsts[cid].length; j++) {
             if(cnode_lsts[cid][j].timestamp > timestamp)
@@ -206,14 +208,14 @@ for(k=0; k<4; k++) {
          values.push({"year" : begin_times[k]+0.01, "position":k});
          values.push({"year" : cnode_lists[k][i].timestamp+0.01, "position":k});
          if(cnode_lists[k][i].state=="Primary")
-            cnode_json.push({"name":"PrimaryTimeout_"+k+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
+            cnode_json.push({"name":"PrimaryTimeout_"+k+ "_"+cnode_lists[k][i].height+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
          else
-            cnode_json.push({"name":"Timeout_"+k+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
-         continue;
+            cnode_json.push({"name":"Timeout_"+k+"_"+cnode_lists[k][i].height+"_"+begin_times[k]+"_"+cnode_lists[k][i].timestamp, "values":values});
       }
 
       if(cnode_lists[k][i].idstr == "OnPrepareRequestReceived") {
-         var sendermsg = findSendBefore("send perpare request", cnode_lists, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
+         //console.log("OnPrepareRequestReceived");
+         var sendermsg = findSendBefore("send perpare request", cnode_lists, cnode_lists[k][i].index, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
          if(!sendermsg) {
             console.log("findSendBefore for OnPrepareRequestReceived k="+k+" height="+cnode_lists[k][i].height);
             console.log("WARNING! could not find origin of message.");//+JSON.stringify(cnode_lists[k][i]));
@@ -224,11 +226,10 @@ for(k=0; k<4; k++) {
          values.push({"year" : ""+sendermsg.timestamp+".02"+k, "position": senderc});
          values.push({"year" : ""+cnode_lists[k][i].timestamp+".02"+senderc, "position":k});
          cnode_json.push({"name":"PrepRequest_"+senderc+"_"+sendermsg.height+"_"+k, "values":values});
-         continue;
       }
 
       if(cnode_lists[k][i].idstr == "OnPrepareResponseReceived") {
-         var sendermsg = findSendBefore("send perpare response", cnode_lists, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
+         var sendermsg = findSendBefore("send perpare response", cnode_lists, cnode_lists[k][i].index, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
          if(!sendermsg) {
             console.log("findSendBefore for OnPrepareResponseReceived k="+k+" height="+cnode_lists[k][i].height);
             console.log("WARNING! could not find origin of message.");//+JSON.stringify(cnode_lists[k][i]));
@@ -239,27 +240,7 @@ for(k=0; k<4; k++) {
          values.push({"year" : ""+sendermsg.timestamp+".03"+k, "position": senderc});
          values.push({"year" : ""+cnode_lists[k][i].timestamp+".03"+senderc, "position":k});
          cnode_json.push({"name":"PrepResponse_"+senderc+"_"+sendermsg.height+"_"+k, "values":values});
-         continue;
       }
       // TODO: continue...
    }
 }
-
-/*
-{
-"name": "PrimaryTimeout_3_8_29",
-"values": [
-   {
-      "year": 29.01, // +0.01
-      "position": 3
-   },
-   {
-      "year": 34.01, // +0.01
-      "position": 3
-   }
-]
-},
-*/
-
-// "send perpare response" -> SignAndRelay(context.MakePrepareResponse(context.Signatures[context.MyIndex]));
-//
