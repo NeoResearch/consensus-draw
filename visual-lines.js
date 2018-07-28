@@ -70,13 +70,27 @@ function addMsg(x, nodelist=[]) {
    }
 };
 
-
-
+var i = 0;
 node1logs = $("#node1data")[0].value.split("\n");
 node1list = [];
-var i = 0;
 for(i=0; i<node1logs.length; i++)
    addMsg(node1logs[i], node1list);
+
+node2logs = $("#node2data")[0].value.split("\n");
+node2list = [];
+for(i=0; i<node2logs.length; i++)
+   addMsg(node2logs[i], node2list);
+
+node3logs = $("#node3data")[0].value.split("\n");
+node3list = [];
+for(i=0; i<node3logs.length; i++)
+   addMsg(node3logs[i], node3list);
+
+node4logs = $("#node4data")[0].value.split("\n");
+node4list = [];
+for(i=0; i<node4logs.length; i++)
+   addMsg(node4logs[i], node4list);
+
 
 
 // "send perpare response" -> SignAndRelay(context.MakePrepareResponse(context.Signatures[context.MyIndex]));
