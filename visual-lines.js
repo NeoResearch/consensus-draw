@@ -241,6 +241,20 @@ for(k=0; k<4; k++) {
          values.push({"year" : ""+cnode_lists[k][i].timestamp+".03"+senderc, "position":k});
          cnode_json.push({"name":"PrepResponse_"+senderc+"_"+sendermsg.height+"_"+k, "values":values});
       }
+
+      if(cnode_lists[k][i].idstr == "OnChangeViewReceived") {
+         var sendermsg = findSendBefore("request change view", cnode_lists, cnode_lists[k][i].index, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
+         if(!sendermsg) {
+            console.log("findSendBefore for OnChangeViewReceived k="+k+" height="+cnode_lists[k][i].height);
+            console.log("WARNING! could not find origin of message.");//+JSON.stringify(cnode_lists[k][i]));
+            continue;
+         }
+         var senderc = sendermsg.index;  // sender consensus (destination is k)
+         var values = [];
+         values.push({"year" : ""+sendermsg.timestamp+".04"+k, "position": senderc});
+         values.push({"year" : ""+cnode_lists[k][i].timestamp+".04"+senderc, "position":k});
+         cnode_json.push({"name":"ChangeView_"+senderc+"_"+sendermsg.height+"_"+k+"_"+cnode_lists[k][i].nv, "values":values});
+      }
       // TODO: continue...
    }
 }
