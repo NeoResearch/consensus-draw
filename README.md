@@ -28,6 +28,9 @@ RUN: `python -m SimpleHTTPServer 10000`
 
 ACCESS: `localhost:10000`
 
+## Example
+Current example is loaded from `example-logs.js`, which is parsed automatically.
+
 **MIT License**
 
 NeoResearch 2018
