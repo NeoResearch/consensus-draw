@@ -5,8 +5,8 @@ var margin = {top: 20, right: 30, bottom: 30, left: 50},
     heightBrush = 250 - margin.top - margin.bottom,
 	heightAll = 100 - marginAll.top - marginAll.bottom;
 
-var startYear = 01,
-	endYear = 59,
+var startYear = 64431,
+	endYear = 64503,
 	yearRange = endYear - startYear;
 
 //Stroke width per max position

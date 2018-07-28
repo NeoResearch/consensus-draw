@@ -1,681 +1,928 @@
 var consensus_data = [
-   {
-    "name": "PrimaryTimeout_3_8_29",
+  {
+    "name": "PrepResponse_2_559_0",
     "values": [
       {
-         "year": 29.01, // +0.01
-         "position": 3
+        "year": "64436.030",
+        "position": 2
       },
       {
-         "year": 34.01, // +0.01
-         "position": 3
+        "year": "64438.032",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "Timeout_0_8_29",
+  },
+  {
+    "name": "PrimaryTimeout_0_560_64439_64444",
     "values": [
       {
-         "year": 29.01,
-         "position": 0
+        "year": 64439.01,
+        "position": 0
       },
       {
-         "year": 39.01,
-         "position": 0
+        "year": 64444.01,
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrimaryTimeout_0_9_40",
+  },
+  {
+    "name": "PrepResponse_3_560_0",
     "values": [
       {
-         "year": 40.01, // +0.01
-         "position": 0
+        "year": "64445.030",
+        "position": 3
       },
       {
-         "year": 45.01,
-         "position": 0
+        "year": "64447.033",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "Timeout_3_9_37",
+  },
+  {
+    "name": "PrepResponse_2_560_0",
     "values": [
       {
-         "year": 37.01,  // +0.01
-         "position": 3
+        "year": "64445.030",
+        "position": 2
       },
       {
-         "year": 47.01, // +0.01
-         "position": 3
+        "year": "64447.032",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepRequest_3_8_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_561_0",
     "values": [
       {
-         "year": 34.022, // decimal +0.02 is destination
-         "position": 3
+        "year": "64452.030",
+        "position": 3
       },
       {
-         "year": 35.023, // decimal +0.02 is origin
-         "position": 2
+        "year": "64454.033",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepRequest_3_8_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_1_561_0",
     "values": [
       {
-         "year": 34.021, // decimal +0.02 is destination
-         "position": 3
+        "year": "64451.020",
+        "position": 1
       },
       {
-         "year": 36.023, // decimal +0.02 is origin
-         "position": 1
+        "year": "64457.021",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepRequest_3_8_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "Timeout_0_561_64447_64457",
     "values": [
       {
-         "year": 34.020, // decimal is destination
-         "position": 3
+        "year": 64447.01,
+        "position": 0
       },
       {
-         "year": 39.023, // decimal is origin
-         "position": 0
+        "year": 64457.01,
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_2_8_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "ChangeView_3_561_0_1",
     "values": [
       {
-         "year": 35.033, // decimal +0.03 is destination
-         "position": 2
+        "year": "64456.040",
+        "position": 3
       },
       {
-         "year": 36.032, // decimal +0.03 is origin
-         "position": 3
+        "year": "64458.043",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_8_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_2_562_0",
     "values": [
       {
-         "year": 36.033, // decimal +0.03 is destination
-         "position": 1
+        "year": "64466.020",
+        "position": 2
       },
       {
-         "year": 37.031, // decimal +0.03 is origin
-         "position": 3
+        "year": "64468.022",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_8_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_562_0",
     "values": [
       {
-         "year": 36.032, // decimal +0.03 is destination
-         "position": 1
+        "year": "64467.030",
+        "position": 3
       },
       {
-         "year": 38.031, // decimal +0.03 is origin
-         "position": 2
+        "year": "64469.033",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_8_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_3_563_0",
     "values": [
       {
-         "year": 36.030, // decimal +0.03 is destination
-         "position": 1
+        "year": "64474.020",
+        "position": 3
       },
       {
-         "year": 40.031, // decimal +0.03 is origin
-         "position": 0
+        "year": "64479.023",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepRequest_0_9_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "Timeout_0_563_64469_64479",
     "values": [
       {
-         "year": 45.023, // decimal is destination
-         "position": 0
+        "year": 64469.01,
+        "position": 0
       },
       {
-         "year": 46.020, // decimal is origin
-         "position": 3
+        "year": 64479.01,
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepRequest_0_9_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_1_563_0",
     "values": [
       {
-         "year": 45.022, // decimal is destination
-         "position": 0
+        "year": "64476.030",
+        "position": 1
       },
       {
-         "year": 46.020, // decimal is origin
-         "position": 2
+        "year": "64480.031",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepRequest_0_9_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_2_563_0",
     "values": [
       {
-         "year": 45.021, // decimal is destination
-         "position": 0
+        "year": "64475.030",
+        "position": 2
       },
       {
-         "year": 46.020, // decimal is origin
-         "position": 1
+        "year": "64480.032",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_9_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrimaryTimeout_0_564_64480_64485",
     "values": [
       {
-         "year": 46.030, // decimal +0.03 is destination
-         "position": 1
+        "year": 64480.01,
+        "position": 0
       },
       {
-         "year": 48.031, // decimal +0.03 is origin
-         "position": 0
+        "year": 64485.01,
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_9_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_564_0",
     "values": [
       {
-         "year": 46.032, // decimal +0.03 is destination
-         "position": 1
+        "year": "64486.030",
+        "position": 3
       },
       {
-         "year": 47.031, // decimal +0.03 is origin
-         "position": 2
+        "year": "64488.033",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_9_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_1_564_0",
     "values": [
       {
-         "year": 46.033, // decimal +0.03 is destination
-         "position": 1
+        "year": "64486.030",
+        "position": 1
       },
       {
-         "year": 47.031, // decimal +0.03 is origin
-         "position": 3
+        "year": "64488.031",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_9_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_1_565_0",
     "values": [
       {
-         "year": 46.030, // decimal +0.03 is destination
-         "position": 3
+        "year": "64492.020",
+        "position": 1
       },
       {
-         "year": 48.033, // decimal +0.03 is origin
-         "position": 0
+        "year": "64494.021",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_9_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_565_0",
     "values": [
       {
-         "year": 46.031, // decimal +0.03 is destination
-         "position": 3
+        "year": "64493.030",
+        "position": 3
       },
       {
-         "year": 47.033, // decimal +0.03 is origin
-         "position": 1
+        "year": "64495.033",
+        "position": 0
       }
     ]
-   },
-   {
-    "name": "PrimaryTimeout_2_5_4",
+  },
+  {
+    "name": "PrepResponse_2_559_1",
     "values": [
       {
-         "year": 2.01, // +0.01
-         "position": 0
+        "year": "64436.031",
+        "position": 2
       },
       {
-         "year": 4.01, // +0.01
-         "position": 0
+        "year": "64437.032",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrimaryTimeout_6_6_11",
+  },
+  {
+    "name": "PrepRequest_0_560_1",
     "values": [
       {
-         "year": 6.01, // +0.01
-         "position": 1
+        "year": "64444.021",
+        "position": 0
       },
       {
-         "year": 11.01, // +0.01
-         "position": 1
+        "year": "64446.020",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrimaryTimeout_21_7_26",
+  },
+  {
+    "name": "PrepResponse_3_560_1",
     "values": [
       {
-         "year": 21.01, // +0.01
-         "position": 2
+        "year": "64445.031",
+        "position": 3
       },
       {
-         "year": 26.01, // +0.01
-         "position": 2
+        "year": "64446.033",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "Timeout_2_6_6_17", // include consensusid before...  begin, block, end
+  },
+  {
+    "name": "PrimaryTimeout_1_561_64446_64451",
     "values": [
       {
-         "year": 6.01, // +0.01
-         "position": 2
+        "year": 64446.01,
+        "position": 1
       },
       {
-         "year": 17.01, // +0.01
-         "position": 2
+        "year": 64451.01,
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "Timeout_3_6_6_16", // include consensusid before...  begin, block, end
+  },
+  {
+    "name": "PrepResponse_3_561_1",
     "values": [
       {
-         "year": 6.01, // +0.01
-         "position": 3
+        "year": "64452.031",
+        "position": 3
       },
       {
-         "year": 16.01, // +0.01
-         "position": 3
+        "year": "64454.033",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "Timeout_0_7_6_17", // include consensusid before...  begin, block, end
+  },
+  {
+    "name": "PrepResponse_0_561_1",
     "values": [
       {
-         "year": 7.01, // +0.01
-         "position": 0
+        "year": "64457.031",
+        "position": 0
       },
       {
-         "year": 17.01, // +0.01
-         "position": 0
+        "year": "64458.030",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "Timeout_1_18_7_26", // include consensusid before...  begin, block, end
+  },
+  {
+    "name": "PrepRequest_2_562_1",
     "values": [
       {
-         "year": 18.01, // +0.01
-         "position": 1
+        "year": "64466.021",
+        "position": 2
       },
       {
-         "year": 26.01, // +0.01
-         "position": 1
+        "year": "64467.022",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "Timeout_3_18_7_28", // include consensusid before...  begin, block, end
+  },
+  {
+    "name": "Timeout_1_562_64458_64468",
     "values": [
       {
-         "year": 18.01, // +0.01
-         "position": 3
+        "year": 64458.01,
+        "position": 1
       },
       {
-         "year": 28.01, // +0.01
-         "position": 3
+        "year": 64468.01,
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepRequest_0_5_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_562_1",
     "values": [
       {
-         "year": 4.021, // decimal is destination
-         "position": 0
+        "year": "64467.031",
+        "position": 3
       },
       {
-         "year": 6.020, // decimal is origin
-         "position": 1
+        "year": "64469.033",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepRequest_0_5_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_3_563_1",
     "values": [
       {
-         "year": 4.022, // decimal is destination
-         "position": 0
+        "year": "64474.021",
+        "position": 3
       },
       {
-         "year": 5.020, // decimal is origin
-         "position": 2
+        "year": "64476.023",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepRequest_0_5_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_2_563_1",
     "values": [
       {
-         "year": 4.023, // decimal is destination
-         "position": 0
+        "year": "64475.031",
+        "position": 2
       },
       {
-         "year": 5.020, // decimal is origin
-         "position": 3
+        "year": "64477.032",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_5_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_0_564_1",
     "values": [
       {
-         "year": 5.031, // decimal +0.03 is destination
-         "position": 3
+        "year": "64485.021",
+        "position": 0
       },
       {
-         "year": 6.033, // decimal +0.03 is origin
-         "position": 1
+        "year": "64486.020",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_5_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_564_1",
     "values": [
       {
-         "year": 5.030, // decimal +0.03 is destination
-         "position": 3
+        "year": "64486.031",
+        "position": 3
       },
       {
-         "year": 7.033, // decimal +0.03 is origin
-         "position": 0
+        "year": "64487.033",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_5_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrimaryTimeout_1_565_64487_64492",
     "values": [
       {
-         "year": 5.032, // decimal +0.03 is destination
-         "position": 3
+        "year": 64487.01,
+        "position": 1
       },
       {
-         "year": 6.033, // decimal +0.03 is origin
-         "position": 2
+        "year": 64492.01,
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepResponse_2_5_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_565_1",
     "values": [
       {
-         "year": 5.033, // decimal +0.03 is destination
-         "position": 2
+        "year": "64493.031",
+        "position": 3
       },
       {
-         "year": 6.032, // decimal +0.03 is origin
-         "position": 3
+        "year": "64495.033",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepResponse_2_5_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_2_565_1",
     "values": [
       {
-         "year": 5.030, // decimal +0.03 is destination
-         "position": 2
+        "year": "64493.031",
+        "position": 2
       },
       {
-         "year": 7.032, // decimal +0.03 is origin
-         "position": 0
+        "year": "64495.032",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepRequest_1_6_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_2_566_1",
     "values": [
       {
-         "year": 11.020, // decimal is destination
-         "position": 1
+        "year": "64499.021",
+        "position": 2
       },
       {
-         "year": 17.021, // decimal is origin
-         "position": 0
+        "year": "64501.022",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepRequest_1_6_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_566_1",
     "values": [
       {
-         "year": 11.022, // decimal is destination
-         "position": 1
+        "year": "64500.031",
+        "position": 3
       },
       {
-         "year": 21.021, // decimal is origin
-         "position": 2
+        "year": "64502.033",
+        "position": 1
       }
     ]
-   },
-   {
-    "name": "PrepRequest_1_6_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_0_560_2",
     "values": [
       {
-         "year": 11.023, // decimal is destination
-         "position": 1
+        "year": "64444.022",
+        "position": 0
       },
       {
-         "year": 12.021, // decimal is origin
-         "position": 3
+        "year": "64445.020",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_6_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_560_2",
     "values": [
       {
-         "year": 12.030, // decimal +0.03 is destination
-         "position": 3
+        "year": "64445.032",
+        "position": 3
       },
       {
-         "year": 17.032, // decimal +0.03 is origin
-         "position": 0
+        "year": "64446.033",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_6_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "Timeout_2_561_64446_64457",
     "values": [
       {
-         "year": 12.031, // decimal +0.03 is destination
-         "position": 3
+        "year": 64446.01,
+        "position": 2
       },
       {
-         "year": 14.033, // decimal +0.03 is origin
-         "position": 1
+        "year": 64457.01,
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_6_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_1_561_2",
     "values": [
       {
-         "year": 12.032, // decimal +0.03 is destination
-         "position": 3
+        "year": "64451.022",
+        "position": 1
       },
       {
-         "year": 21.033, // decimal +0.03 is origin
-         "position": 2
+        "year": "64461.021",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "ChangeView_3_6_0_1", // cons_id - block_id - cons_id (destination) - view (1)
+  },
+  {
+    "name": "PrepResponse_3_561_2",
     "values": [
       {
-         "year": 16.040, // decimal +0.04 is destination
-         "position": 3
+        "year": "64452.032",
+        "position": 3
       },
       {
-         "year": 18.043, // decimal +0.04 is origin
-         "position": 0
+        "year": "64461.033",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepRequest_2_7_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrimaryTimeout_2_562_64461_64466",
     "values": [
       {
-         "year": 26.020, // decimal is destination
-         "position": 2
+        "year": 64461.01,
+        "position": 2
       },
       {
-         "year": 28.022, // decimal is origin
-         "position": 0
+        "year": 64466.01,
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepRequest_2_7_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_1_562_2",
     "values": [
       {
-         "year": 26.021, // decimal is destination
-         "position": 2
+        "year": "64467.032",
+        "position": 1
       },
       {
-         "year": 27.022, // decimal is origin
-         "position": 1
+        "year": "64468.031",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepRequest_2_7_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_0_562_2",
     "values": [
       {
-         "year": 26.023, // decimal is destination
-         "position": 2
+        "year": "64468.032",
+        "position": 0
       },
       {
-         "year": 27.022, // decimal is origin
-         "position": 3
+        "year": "64469.030",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_7_0", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_3_563_2",
     "values": [
       {
-         "year": 27.030, // decimal +0.03 is destination
-         "position": 3
+        "year": "64474.022",
+        "position": 3
       },
       {
-         "year": 29.033, // decimal +0.03 is origin
-         "position": 0
+        "year": "64475.023",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_0_6_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_1_563_2",
     "values": [
       {
-         "year": 17.031, // decimal +0.03 is destination
-         "position": 0
+        "year": "64476.032",
+        "position": 1
       },
       {
-         "year": 18.030, // decimal +0.03 is origin
-         "position": 1
+        "year": "64478.031",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_0_6_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_0_564_2",
     "values": [
       {
-         "year": 17.033, // decimal +0.03 is destination
-         "position": 0
+        "year": "64485.022",
+        "position": 0
       },
       {
-         "year": 18.030, // decimal +0.03 is origin
-         "position": 3
+        "year": "64486.020",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_3_7_1", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_1_564_2",
     "values": [
       {
-         "year": 27.031, // decimal +0.03 is destination
-         "position": 3
+        "year": "64486.032",
+        "position": 1
       },
       {
-         "year": 29.033, // decimal +0.03 is origin
-         "position": 1
+        "year": "64487.031",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_0_7_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_564_2",
     "values": [
       {
-         "year": 28.032, // decimal +0.03 is destination
-         "position": 0
+        "year": "64486.032",
+        "position": 3
       },
       {
-         "year": 29.030, // decimal +0.03 is origin
-         "position": 2
+        "year": "64487.033",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_7_2", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepRequest_1_565_2",
     "values": [
       {
-         "year": 27.032, // decimal +0.03 is destination
-         "position": 1
+        "year": "64492.022",
+        "position": 1
       },
       {
-         "year": 28.031, // decimal +0.03 is origin
-         "position": 2
+        "year": "64493.021",
+        "position": 2
       }
     ]
-   },
-   {
-    "name": "PrepResponse_1_7_3", // cons_id - block_id - cons_id (destination)
+  },
+  {
+    "name": "PrepResponse_3_565_2",
     "values": [
       {
-         "year": 27.033, // decimal +0.03 is destination
-         "position": 1
+        "year": "64493.032",
+        "position": 3
       },
       {
-         "year": 29.031, // decimal +0.03 is origin
-         "position": 3
+        "year": "64494.033",
+        "position": 2
       }
     ]
-   },
-]
+  },
+  {
+    "name": "PrimaryTimeout_2_566_64494_64499",
+    "values": [
+      {
+        "year": 64494.01,
+        "position": 2
+      },
+      {
+        "year": 64499.01,
+        "position": 2
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_2_559_3",
+    "values": [
+      {
+        "year": "64436.033",
+        "position": 2
+      },
+      {
+        "year": "64437.032",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepRequest_0_560_3",
+    "values": [
+      {
+        "year": "64444.023",
+        "position": 0
+      },
+      {
+        "year": "64445.020",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_2_560_3",
+    "values": [
+      {
+        "year": "64445.033",
+        "position": 2
+      },
+      {
+        "year": "64446.032",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepRequest_1_561_3",
+    "values": [
+      {
+        "year": "64451.023",
+        "position": 1
+      },
+      {
+        "year": "64452.021",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "Timeout_3_561_64446_64456",
+    "values": [
+      {
+        "year": 64446.01,
+        "position": 3
+      },
+      {
+        "year": 64456.01,
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_0_561_3",
+    "values": [
+      {
+        "year": "64457.033",
+        "position": 0
+      },
+      {
+        "year": "64458.030",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepRequest_2_562_3",
+    "values": [
+      {
+        "year": "64466.023",
+        "position": 2
+      },
+      {
+        "year": "64467.022",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "Timeout_3_562_64458_64468",
+    "values": [
+      {
+        "year": 64458.01,
+        "position": 3
+      },
+      {
+        "year": 64468.01,
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_1_562_3",
+    "values": [
+      {
+        "year": "64467.033",
+        "position": 1
+      },
+      {
+        "year": "64469.031",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrimaryTimeout_3_563_64469_64474",
+    "values": [
+      {
+        "year": 64469.01,
+        "position": 3
+      },
+      {
+        "year": 64474.01,
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_2_563_3",
+    "values": [
+      {
+        "year": "64475.033",
+        "position": 2
+      },
+      {
+        "year": "64476.032",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_1_563_3",
+    "values": [
+      {
+        "year": "64476.033",
+        "position": 1
+      },
+      {
+        "year": "64477.031",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepRequest_0_564_3",
+    "values": [
+      {
+        "year": "64485.023",
+        "position": 0
+      },
+      {
+        "year": "64486.020",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "Timeout_3_564_64477_64487",
+    "values": [
+      {
+        "year": 64477.01,
+        "position": 3
+      },
+      {
+        "year": 64487.01,
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_1_564_3",
+    "values": [
+      {
+        "year": "64486.033",
+        "position": 1
+      },
+      {
+        "year": "64487.031",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepRequest_1_565_3",
+    "values": [
+      {
+        "year": "64492.023",
+        "position": 1
+      },
+      {
+        "year": "64493.021",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepResponse_2_565_3",
+    "values": [
+      {
+        "year": "64493.033",
+        "position": 2
+      },
+      {
+        "year": "64494.032",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "PrepRequest_2_566_3",
+    "values": [
+      {
+        "year": "64499.023",
+        "position": 2
+      },
+      {
+        "year": "64500.022",
+        "position": 3
+      }
+    ]
+  }
+];
 
 allMessageNames = [];
 messageNamesByID = [];
@@ -689,10 +936,76 @@ consensus_data.forEach(function(d,i) {
 // purple: "#76448E"
 
 var colorMessages = d3.scale.ordinal()
-		.range(["#76448E", "#cccccc", "#76448E", "#cccccc", "#FEC60B", "#FEC60B", "#FEC60B", "#00FF00", "#00FF00",
-      "#00FF00", "#00FF00", "#FEC60B","#FEC60B","#FEC60B","#00FF00", "#00FF00", "#00FF00", "#00FF00", "#00FF00",
-      "#76448E", "#76448E", "#76448E", "#cccccc", "#cccccc", "#cccccc", "#cccccc", "#cccccc", "#FEC60B","#FEC60B",
-      "#FEC60B","#00FF00", "#00FF00", "#00FF00","#00FF00","#00FF00", "#FEC60B", "#FEC60B", "#FEC60B", "#00FF00",
-      "#00FF00","#00FF00", "#FF0000", "#FEC60B", "#FEC60B","#FEC60B", "#00FF00", "#00FF00","#00FF00","#00FF00",
-      "#00FF00","#00FF00","#00FF00",])
-		.domain(allMessageNames);
+		.range([
+  "#00FF00",
+  "#76448E",
+  "#00FF00",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#CCCCCC",
+  "#FF0000",
+  "#FEC60B",
+  "#00FF00",
+  "#FEC60B",
+  "#CCCCCC",
+  "#00FF00",
+  "#00FF00",
+  "#76448E",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#76448E",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#CCCCCC",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#76448E",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#CCCCCC",
+  "#FEC60B",
+  "#00FF00",
+  "#76448E",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#76448E",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#FEC60B",
+  "#CCCCCC",
+  "#00FF00",
+  "#FEC60B",
+  "#CCCCCC",
+  "#00FF00",
+  "#76448E",
+  "#00FF00",
+  "#00FF00",
+  "#FEC60B",
+  "#CCCCCC",
+  "#00FF00",
+  "#FEC60B",
+  "#00FF00",
+  "#FEC60B"
+]).domain(allMessageNames);
