@@ -1,3 +1,5 @@
+/* This code is taken from D3 babynames example on GitHub: https://github.com/nbremer/babynames */
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 11px;
@@ -44,7 +46,7 @@ body {
     cursor: hand;
 	font-weight: 700;
 	border-bottom: 1px dashed #999;
-	text-decoration: none; 
+	text-decoration: none;
 	shape-rendering: crispEdges;
 }
 

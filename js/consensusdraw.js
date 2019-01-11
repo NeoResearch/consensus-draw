@@ -1,3 +1,6 @@
+// This code is adapted from D3 babynames example available on GitHub
+// https://github.com/nbremer/babynames
+
 //Brush is the higher focus chart, All is the smaller context chart
 var margin = {top: 20, right: 30, bottom: 30, left: 50},
 	marginAll = {top: 20, right: 30, bottom: 30, left: 50}
@@ -662,7 +665,7 @@ function redraw(choice) {
 	//Remove all the previous options
 	var select = document.getElementById("searchBox");
 	select.options.length = 0;
-	select.options[0] = new Option("Search name...", "", true, false)
+	select.options[0] = new Option("Highlight consensus message", "", true, false)
 	//Create new options
 	var options = allMessageNames; // (gender === "boys" ? allBoyNames : allMessageNames);
 	//Put new options into select box

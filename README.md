@@ -24,13 +24,22 @@ Tolerance](http://pmg.csail.mit.edu/papers/osdi99.pdf)
 </p>
 
 ## How to use
-RUN: `python -m SimpleHTTPServer 10000`
 
-ACCESS: `localhost:10000`
+### Node express server
 
-## Example
-Current example is loaded from `example-logs.js`, which is parsed automatically.
+`npm install`
 
-**MIT License**
+RUN: `runConsensusDraw.sh`
+
+**ACCESS:** `http://localhost:20000`
+
+An example will be created automatically with `generateExample.sh`
+
+Or... get it from running neocompiler-eco: `./getremotelog/getconsensuslog.sh`
+
+
+## License
+
+The code is **MIT Licensed** (except for express indications).
 
 NeoResearch 2018
