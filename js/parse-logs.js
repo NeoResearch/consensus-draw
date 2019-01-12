@@ -20,6 +20,10 @@ function LogMsg(timestamp, realtime, idstr, height=-1, view=-1, index=-1, tx=-1,
 
 // adds message from consensus_id to nodelist (and returns block height if known, otherwise -1)
 function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
+   if(x.length < 8) {
+      console.log("warning: empty message for node "+consensus_id+". Ignoring!");
+      return currentheight;
+   }
    if(x.charAt(9)==']') {  // seconds
       realtime = x.substring(1, 9);
       y = x.substring(10, x.length).trim();
@@ -34,14 +38,14 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
 
    idstr = ""; height = -1; view = -1; index = -1; tx = -1;
    nv = -1; status=""; state=""; role=""; expected=-1; current=-1; nodes=-1;
-   idstr = "OnPrepareRequestReceived"; // [03:38:53] OnPrepareResponseReceived: height=59 view=0 index=0
+   idstr = "OnPrepareRequestReceived"; // [03:38:53] OnPrepareRequestReceived: height=59 view=0 index=0 tx=1
    if(y.startsWith(idstr)) {
       height = Number(y.substring(y.indexOf("height=")+"height=".length, y.lenght).split(" ")[0]);
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
       index  = Number(y.substring(y.indexOf("index=")+"index=".length, y.lenght).split(" ")[0]);
       tx     = Number(y.substring(y.indexOf("tx=")+"tx=".length, y.lenght).split(" ")[0]);
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return -1; // unknown block height
+      return height; // exact height
    }
    idstr = "initialize"; //[03:38:47] initialize: height=59 view=0 index=2 role=Backup
    if(y.startsWith(idstr)) {
@@ -54,7 +58,7 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
       }
       role   = y.substring(y.indexOf("role=")+"role=".length, y.lenght).split(" ")[0];
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return height; // exact height
    }
    idstr = "timeout"; //[03:38:42] timeout: height=58 view=0 state=Primary
    if(y.startsWith(idstr)) {
@@ -62,10 +66,10 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
       state  = y.substring(y.indexOf("state=")+"state=".length, y.lenght).split(" ")[0];
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return height; // exact height
    }
 
-   idstr1 = "send perpare request"; //[03:38:42] send perpare request: height=58 view=0
+   idstr1 = "send perpare request"; //[03:38:42] send prepare request: height=58 view=0
    idstr2 = "send prepare request";
    if(y.startsWith(idstr1) || y.startsWith(idstr2)) {
       idstr = idstr2;
@@ -73,7 +77,7 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
       index  = consensus_id;
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return height; // exact height
    }
 
    idstr1 = "send perpare response"; //[03:38:53] send perpare response
@@ -83,7 +87,7 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
       index  = consensus_id;
       height = currentheight; // receives current height as parameter (important to keep this!)
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return currentheight; // don't know exact height
    }
    idstr = "OnPrepareResponseReceived"; // [03:38:53] OnPrepareResponseReceived: height=59 view=0 index=0
    if(y.startsWith(idstr)) {
@@ -91,25 +95,25 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
       index  = Number(y.substring(y.indexOf("index=")+"index=".length, y.lenght).split(" ")[0]);
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return -1; // unknown block height
+      return height; // exact height
    }
    idstr = "relay block"; // [03:38:53] relay block: 0x06961a306d717d1507bf11704ebf80d59d7e9d42cd2beb410a5d5e01251fc8ae
    if(y.startsWith(idstr)) {
       height = currentheight; // receives current height as parameter (important to keep this!)
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return currentheight; // don't know exact height
    }
    idstr = "persist block"; // [03:38:53] persist block: 0x06961a306d717d1507bf11704ebf80d59d7e9d42cd2beb410a5d5e01251fc8ae
    if(y.startsWith(idstr)) {
       height = currentheight; // receives current height as parameter (important to keep this!)
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return currentheight; // don't know exact height
    }
    idstr = "reject block"; // [03:38:53] reject block: 0x06961a306d717d1507bf11704ebf80d59d7e9d42cd2beb410a5d5e01251fc8ae
    if(y.startsWith(idstr)) {
       height = currentheight; // receives current height as parameter (important to keep this!)
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return currentheight; // don't know exact height
    }
    idstr = "request change view"; // [03:39:49] request change view: height=66 view=0 nv=1 state=Backup, ViewChanging
    if(y.startsWith(idstr)) {
@@ -119,7 +123,7 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
       nv     = Number(y.substring(y.indexOf("nv=")+"nv=".length, y.lenght).split(" ")[0]);
       state  = y.substring(y.indexOf("state=")+"state=".length, y.lenght).split("\n")[0];
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return height; // exact height
    }
    idstr = "OnChangeViewReceived"; // [17:54:18] OnChangeViewReceived: height=561 view=0 index=3 nv=1
    if(y.startsWith(idstr)) {
@@ -128,23 +132,24 @@ function addMsg(x, consensus_id, nodelist=[], currentheight=-1) {
       index  = Number(y.substring(y.indexOf("index=")+"index=".length, y.lenght).split(" ")[0]);
       nv     = Number(y.substring(y.indexOf("nv=")+"nv=".length, y.lenght).split(" ")[0]);
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return height; // exact height
    }
-   idstr = "Commit sent"; // [23:46:37] Commit sent: height=3 state=Backup, RequestReceived, SignatureSent, CommitSent
+   idstr = "send commit"; // [23:46:37] send commit
    if(y.startsWith(idstr)) {
       index  = consensus_id;
-      height = Number(y.substring(y.indexOf("height=")+"height=".length, y.lenght).split(" ")[0]);
-      state  = y.substring(y.indexOf("state=")+"state=".length, y.lenght).split("\n")[0];
+      height = currentheight; // receives current height as parameter (important to keep this!)
+      //height = Number(y.substring(y.indexOf("height=")+"height=".length, y.lenght).split(" ")[0]);
+      //state  = y.substring(y.indexOf("state=")+"state=".length, y.lenght).split("\n")[0];
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return currentheight; // don't know exact height
    }
-   idstr = "OnCommitAgreement"; // [23:46:39] OnCommitAgreement: height=3 view=0 index=1
+   idstr = "OnCommitReceived"; // [23:46:39] OnCommitReceived: height=3 view=0 index=1
    if(y.startsWith(idstr)) {
       height = Number(y.substring(y.indexOf("height=")+"height=".length, y.lenght).split(" ")[0]);
       view   = Number(y.substring(y.indexOf("view=")+"view=".length, y.lenght).split(" ")[0]);
       index  = Number(y.substring(y.indexOf("index=")+"index=".length, y.lenght).split(" ")[0]);
       nodelist.push(new LogMsg(timestamp, realtime, idstr, height, view, index, tx, nv, status, state, role, expected, current, nodes));
-      return height;
+      return height; // exact height
    }
    return -1;
 };
@@ -172,13 +177,18 @@ function findSendBefore(strid, cnode_lsts, senderidx, timestamp, receiver_id, he
 function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
    var i = 0;
    node1logs = node1log.split("\n");
+   console.log(node1logs);
    node1list = [];
    node1id = 0;
-   cheight = -1; // current height
+   var cheight = -1; // current height
    for(i=0; i<node1logs.length; i++) {
       tmpheight = addMsg(node1logs[i], node1id, node1list, cheight);
-      if(tmpheight > 0)
+      if(tmpheight > 0) {
          cheight = tmpheight;
+         console.log("height updated for node 1: "+cheight);
+       }
+      else
+         console.log("height is negative for node1 message: "+node1logs[i]);
    }
 
    node2logs = node2log.split("\n");
@@ -272,6 +282,22 @@ function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
             }
          }
 
+         if(cnode_lists[k][i].idstr == "relay block") {
+            var values = [];
+            values.push({"year" : cnode_lists[k][i].timestamp+".06"+k, "position":k, "realtime":cnode_lists[k][i].realtime});
+            values.push({"year" : (cnode_lists[k][i].timestamp+10)+".07"+k, "position":k, "realtime":cnode_lists[k][i].realtime});
+            cnode_json.push({"name":"RelayBlock_"+k+"_"+cnode_lists[k][i].height+"_addhash", "values":values});
+            color_list.push("#010101");
+         }
+
+         if(cnode_lists[k][i].idstr == "persist block") {
+            var values = [];
+            values.push({"year" : cnode_lists[k][i].timestamp+".08"+k, "position":k, "realtime":cnode_lists[k][i].realtime});
+            values.push({"year" : (cnode_lists[k][i].timestamp+10)+".09"+k, "position":k, "realtime":cnode_lists[k][i].realtime});
+            cnode_json.push({"name":"PersistBlock_"+k+"_"+cnode_lists[k][i].height+"_addhash", "values":values});
+            color_list.push("#FF0000");
+         }
+
          if(cnode_lists[k][i].idstr == "OnPrepareRequestReceived") {
             //console.log("OnPrepareRequestReceived");
             var sendermsg = findSendBefore("send prepare request", cnode_lists, cnode_lists[k][i].index, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
@@ -327,10 +353,10 @@ function parseLogsGenerateJson(node1log, node2log, node3log, node4log) {
             color_list.push("#FF0000");
          }
 
-         if(cnode_lists[k][i].idstr == "OnCommitAgreement") {
-            var sendermsg = findSendBefore("Commit sent", cnode_lists, cnode_lists[k][i].index, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
+         if(cnode_lists[k][i].idstr == "OnCommitReceived") {
+            var sendermsg = findSendBefore("send commit", cnode_lists, cnode_lists[k][i].index, cnode_lists[k][i].timestamp, k, cnode_lists[k][i].height, cnode_lists[k][i].view);
             if(!sendermsg) {
-               console.log("findSendBefore for OnCommitAgreement k="+k+" height="+cnode_lists[k][i].height);
+               console.log("findSendBefore for OnCommitReceived k="+k+" height="+cnode_lists[k][i].height);
                console.log("WARNING! could not find origin of message.");//+JSON.stringify(cnode_lists[k][i]));
                continue;
             }
