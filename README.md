@@ -19,11 +19,23 @@ Tolerance](http://pmg.csail.mit.edu/papers/osdi99.pdf)
 
 <p align="center">
     <img
-      src="./view-sample.png"
+      src="./example-commit.jpeg"
       width="420px;">
 </p>
 
 ## How to use
+
+### Meaning of lines and messages
+
+Horizontal purple lines indicate Primary Timeouts (gray indicate regular timeouts).
+
+Orange indicates prepare requests.
+Green indicates prepare responses.
+Blue indicates commits.
+Red indicates change view messages.
+
+Horizontal black and red indicate block relay and persist, respectively.
+
 
 ### Node express server
 
