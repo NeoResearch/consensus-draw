@@ -23,6 +23,12 @@ Tolerance](http://pmg.csail.mit.edu/papers/osdi99.pdf)
       width="420px;">
 </p>
 
+<p align="center">
+    <img
+      src="./example-changeview.jpeg"
+      width="420px;">
+</p>
+
 ## How to use
 
 ### Meaning of lines and messages
